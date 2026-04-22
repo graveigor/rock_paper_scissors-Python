@@ -1,16 +1,34 @@
 import os
+import random
+
 os.system('cls' if os.name == 'nt' else 'clear')
 
-# --- Rock, paper and scissor game --- (Python)
+# --- Rock, paper and scissors game --- (Python)
 
-import random 
-def pedra_papel_tesoura():
-    opcoes = ["pedra", "papel", "tesoura"] 
-    escolha_computador = random.choice(opcoes) 
-    escolha_usuario = input("Escolha: pedra, papel ou tesoura? ").lower() 
+def rock_paper_scissors():
+    options = ["rock", "paper", "scissors"] 
+    computer_choice = random.choice(options) 
+    user_choice = input("Choose: rock, paper, or scissors? ").lower() 
 
-    if escolha_usuario not in opcoes: 
-        print("Escolha inválida!") 
+    if user_choice not in options: 
+        print("Invalid choice!") 
         return 
 
-    print(f"Computador escolheu: {escolha_computador}") 
+    print(f"Computer chose: {computer_choice}") 
+    
+    if user_choice == computer_choice: 
+        print("It's a tie!") 
+    elif ( 
+        (user_choice == "rock" and computer_choice == "scissors") or 
+        (user_choice == "paper" and computer_choice == "rock") or 
+        (user_choice == "scissors" and computer_choice == "paper") 
+    ): 
+        print("You win!") 
+    else: 
+        print("You lose!") 
+    
+    # Calls the function again to play the next round
+    rock_paper_scissors()
+
+# Starts the game
+rock_paper_scissors()
